@@ -24,8 +24,11 @@ def resize_images_in_folder(folder_path, new_width, new_height):
             except Exception as e:
                 print(f"Error processing {file_path}: {e}")
 
-# Example usage
+# Get user input for dimensions
 folder_path = "C:\\Users\\eabeltranm\\Pictures\\Screenshots"  # Replace with your folder path
-new_width = 500  # Replace with desired width
-new_height = 300  # Replace with desired height
-resize_images_in_folder(folder_path, new_width, new_height)
+try:
+    new_width = int(input("Enter the desired width in pixels: "))
+    new_height = int(input("Enter the desired height in pixels: "))
+    resize_images_in_folder(folder_path, new_width, new_height)
+except ValueError:
+    print("Please enter valid numbers for width and height.")
