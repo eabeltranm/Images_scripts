@@ -51,14 +51,6 @@ for filename in os.listdir(folder):
                 # Resize if needed
                 if new_size is not None:
                     img = img.resize(new_size)
-                # Convert RGBA/LA to RGB if saving as JPEG
-                if img_format == 'JPEG' and img.mode in ('RGBA', 'LA'):
-                    background = Image.new('RGB', img.size, (255, 255, 255))
-                    if img.mode == 'RGBA':
-                        background.paste(img, mask=img.split()[3])  # 3 is the alpha channel
-                    else:  # 'LA'
-                        background.paste(img.convert('RGBA'), mask=img.split()[1])  # 1 is the alpha channel
-                    img = background
                 # Save in new format
                 base_name = os.path.splitext(filename)[0]
                 out_path = os.path.join(output_folder, f"{base_name}.{format_input}")
