@@ -11,7 +11,7 @@ class ImageResizerApp:
         
         # Create and set up the main frame
         main_frame = ttk.Frame(root, padding="10")
-        main_frame.grid(row=0, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
+        main_frame.grid(row=0, column=0, sticky=tk.W+tk.E+tk.N+tk.S)
         
         # Folder selection
         ttk.Label(main_frame, text="Select Folder:").grid(row=0, column=0, sticky=tk.W, pady=5)
@@ -35,7 +35,7 @@ class ImageResizerApp:
         # Progress bar
         self.progress_var = tk.DoubleVar()
         self.progress_bar = ttk.Progressbar(main_frame, variable=self.progress_var, maximum=100)
-        self.progress_bar.grid(row=3, column=0, columnspan=3, sticky=(tk.W, tk.E), pady=10)
+        self.progress_bar.grid(row=3, column=0, columnspan=3, sticky=tk.W+tk.E, pady=10)
         
         # Status label
         self.status_var = tk.StringVar()
