@@ -17,7 +17,7 @@ class BackgroundRemoverApp:
         
         # Create main frame
         main_frame = ttk.Frame(root, padding="10")
-        main_frame.grid(row=0, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
+        main_frame.grid(row=0, column=0, sticky=tk.W+tk.E+tk.N+tk.S)
         main_frame.columnconfigure(1, weight=1)
         
         # Directory selection
@@ -28,33 +28,33 @@ class BackgroundRemoverApp:
         
         # Create frame for the listbox and scrollbar
         list_frame = ttk.Frame(root)
-        list_frame.grid(row=1, column=0, sticky=(tk.W, tk.E, tk.N, tk.S), padx=10, pady=5)
+        list_frame.grid(row=1, column=0, sticky="nsew", padx=10, pady=5)
         list_frame.columnconfigure(0, weight=1)
         list_frame.rowconfigure(0, weight=1)
         
         # Listbox to show files
         self.file_listbox = tk.Listbox(list_frame, height=10)
-        self.file_listbox.grid(row=0, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
+        self.file_listbox.grid(row=0, column=0, sticky="nsew")
         
         # Scrollbar for listbox
         scrollbar = ttk.Scrollbar(list_frame, orient=tk.VERTICAL, command=self.file_listbox.yview)
-        scrollbar.grid(row=0, column=1, sticky=(tk.N, tk.S))
+        scrollbar.grid(row=0, column=1, sticky="ns")
         self.file_listbox.configure(yscrollcommand=scrollbar.set)
         
         # Progress frame
         progress_frame = ttk.Frame(root)
-        progress_frame.grid(row=2, column=0, sticky=(tk.W, tk.E, tk.S), padx=10, pady=10)
+        progress_frame.grid(row=2, column=0, sticky="wes", padx=10, pady=10)
         progress_frame.columnconfigure(0, weight=1)
         
         # Progress bar
         self.progress_var = tk.DoubleVar()
         self.progress_bar = ttk.Progressbar(progress_frame, variable=self.progress_var, maximum=100)
-        self.progress_bar.grid(row=0, column=0, sticky=(tk.W, tk.E), pady=5)
+        self.progress_bar.grid(row=0, column=0, sticky="we", pady=5)
         
         # Status label
         self.status_var = tk.StringVar(value="Ready")
         self.status_label = ttk.Label(progress_frame, textvariable=self.status_var)
-        self.status_label.grid(row=1, column=0, sticky=(tk.W, tk.E), pady=5)
+        self.status_label.grid(row=1, column=0, sticky="we", pady=5)
         
         # Process button
         self.process_button = ttk.Button(progress_frame, text="Remove Backgrounds", command=self.process_images)
