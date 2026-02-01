@@ -23,7 +23,7 @@ class BackgroundRemoverApp:
         # Directory selection
         self.dir_var = tk.StringVar()
         ttk.Label(main_frame, text="Image Directory:").grid(row=0, column=0, sticky=tk.W, pady=5)
-        ttk.Entry(main_frame, textvariable=self.dir_var, width=50).grid(row=0, column=1, padx=5, pady=5, sticky=(tk.W, tk.E))
+        ttk.Entry(main_frame, textvariable=self.dir_var, width=50).grid(row=0, column=1, padx=5, pady=5, sticky=tk.W+tk.E)
         ttk.Button(main_frame, text="Browse", command=self.select_directory).grid(row=0, column=2, padx=5, pady=5)
         
         # Create frame for the listbox and scrollbar
